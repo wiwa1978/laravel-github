@@ -91,6 +91,6 @@
 @task('clean_old_releases', ['on' => ['web']])
     echo 'Clean releases'
     cd {{ $releases_dir }}
-    ls -dt {{ $releases_dir }}/* | tail -n +1 | xargs -d "\n" rm -rf;
+    ls -dt {{ $releases_dir }}/* | tail -n +2 | xargs -d "\n" rm -rf;
 
 @endtask
