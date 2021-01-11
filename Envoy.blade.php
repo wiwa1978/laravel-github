@@ -83,11 +83,14 @@
 
     echo 'Change permissions for storage folder'
     chmod 777 -R {{ $new_release_dir }}/storage
+
+    echo 'Change folder owner'
+    chgrp -R www-data /var/www/html/app
 @endtask
 
 @task('clean_old_releases', ['on' => ['web']])
     echo 'Clean releases'
     cd {{ $releases_dir }}
-    ls -dt {{ $releases_dir }}/* | tail -n +3 | xargs -d "\n" rm -rf;
+    ls -dt {{ $releases_dir }}/* | tail -n +1 | xargs -d "\n" rm -rf;
 
 @endtask
