@@ -70,6 +70,7 @@ jobs:
         run: >
           ssh -i ../private.key -tt root@188.166.52.126
           "
+            cd ~/.ssh/
             ls -al 
             pwd
           "
@@ -85,9 +86,11 @@ jobs:
         run: >
           ssh -i ../private.key -tt root@188.166.52.126
           "
-            cd ~/.ssh/
+             cd ~/.ssh/
+            ls -al 
             cat config 
           "   
+        shell: bash
       - name: Checkout
         uses: actions/checkout@v2
       - name: Install Envoy
