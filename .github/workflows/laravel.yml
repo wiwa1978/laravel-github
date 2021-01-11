@@ -66,14 +66,6 @@ jobs:
         env:
           SSH_PRIVATE_KEY: ${{secrets.SSH_PRIVATE_KEY}}
           SSH_KNOWN_HOSTS: ${{secrets.SSH_KNOWN_HOSTS}}
-      - name: SSH into DO and run
-        run: >
-          ssh -i ../private.key -tt root@188.166.52.126
-          "
-            cd ~/.ssh/
-            ls -al 
-            pwd
-          "
       - name: Create SSH Config file
         run: |
           cd ~/.ssh/
@@ -84,14 +76,18 @@ jobs:
           echo "  IdentityFile /home/root/.ssh/private_key" > ../config
         shell: bash
       - name: Cat config
+        run: |
+          cd ~/.ssh/
+          cat config
+        shell: bash
+      - name: SSH into DO and run
         run: >
           ssh -i ../private.key -tt root@188.166.52.126
           "
-             cd ~/.ssh/
+            cd ~/.ssh/
             ls -al 
-            cat config 
-          "   
-        shell: bash
+            pwd
+          "
       - name: Checkout
         uses: actions/checkout@v2
       - name: Install Envoy
