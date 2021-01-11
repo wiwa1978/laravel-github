@@ -88,13 +88,13 @@
     chgrp -R www-data /var/www/html/app
 @endtask
 
-@task('change_permissions', ['on' => ['web']])
-php artisan optimize:clear
-composer dump-autoload
-php artisan cache:clear
-php artisan route:clear
-php artisan config:clear
-php artisan view:clear
+@task('Clear caches', ['on' => ['web']])
+    php artisan optimize:clear
+    composer dump-autoload
+    php artisan cache:clear
+    php artisan route:clear
+    php artisan config:clear
+    php artisan view:clear
 @endtask
 
 @task('clean_old_releases', ['on' => ['web']])
