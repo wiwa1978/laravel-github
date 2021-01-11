@@ -1,4 +1,4 @@
-@servers(['web' => '-A root@188.166.52.126'])
+@servers(['web' => 'root@188.166.52.126'])
 
 @setup
     $repository = 'https://github.com/wiwa1978/laravel-github.git';
