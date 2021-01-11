@@ -41,6 +41,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - name: Install Envoy
+        run: composer require laravel/envoy --dev
       - name: Setup Node.js
         uses: actions/setup-node@v2-beta
         with:
