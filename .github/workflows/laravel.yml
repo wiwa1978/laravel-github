@@ -68,7 +68,7 @@ jobs:
           SSH_KNOWN_HOSTS: ${{secrets.SSH_KNOWN_HOSTS}}
       - name: SSH into DO and run
         run: >
-          ssh -i ../private.key -tt root@$188.166.52.126
+          ssh -i ../private.key -tt root@188.166.52.126
           "
             ls -al 
             pwd
