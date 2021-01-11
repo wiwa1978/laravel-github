@@ -59,6 +59,10 @@ jobs:
         uses: actions/checkout@v2
       - name: Install Envoy
         run: composer require laravel/envoy --dev
+      - name: Create Database
+        run: |
+          chmod +x ~/.composer/vendor/bin/envoy
+          sudo ln -s ~/.composer/vendor/bin/envoy /usr/bin/envoy
       - name: Deployment
         if: github.ref == 'refs/heads/main'
         run: envoy run deploy --branch=main
