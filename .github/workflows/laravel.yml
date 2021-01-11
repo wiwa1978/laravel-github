@@ -61,9 +61,8 @@ jobs:
         run: composer require laravel/envoy --dev
       - name: Create Database
         run: |
-          cd ~/.composer/vendor/bin
+          cd .composer/vendor/bin
           ls -al 
-
       - name: Deployment
         if: github.ref == 'refs/heads/main'
-        run: envoy run deploy
+        run: php vendor/bin/envoy run deploy
