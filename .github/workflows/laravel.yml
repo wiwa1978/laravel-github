@@ -70,10 +70,10 @@ jobs:
         run: |
           cd ~/.ssh/
           touch config
-          echo "Host 188.166.52.126" > ../config
-          echo "  HostName 188.166.52.126" > ../config
-          echo "  PreferredAuthentications publickey" > ../config
-          echo "  IdentityFile ~/.ssh/private_key" > ../config
+          echo "Host 188.166.52.126" > ~/.ssh/config
+          echo "  HostName 188.166.52.126" > ~/.ssh/config
+          echo "  PreferredAuthentications publickey" > ~/.ssh/config
+          echo "  IdentityFile ~/.ssh/private_key" > ~/.ssh/config
         shell: bash
       - name: Cat config
         run: |
