@@ -88,9 +88,18 @@
     chgrp -R www-data /var/www/html/app
 @endtask
 
+@task('change_permissions', ['on' => ['web']])
+php artisan optimize:clear
+composer dump-autoload
+php artisan cache:clear
+php artisan route:clear
+php artisan config:clear
+php artisan view:clear
+@endtask
+
 @task('clean_old_releases', ['on' => ['web']])
     echo 'Clean releases'
     cd {{ $releases_dir }}
-    ls -dt {{ $releases_dir }}/* | tail -n +2 | xargs -d "\n" rm -rf;
+    ls -dt {{ $releases_dir }}/* | tail -n +3 | xargs -d "\n" rm -rf;
 
 @endtask
