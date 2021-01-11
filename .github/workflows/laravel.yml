@@ -66,6 +66,13 @@ jobs:
         env:
           SSH_PRIVATE_KEY: ${{secrets.SSH_PRIVATE_KEY}}
           SSH_KNOWN_HOSTS: ${{secrets.SSH_KNOWN_HOSTS}}
+      - name: SSH into DO and run
+        run: >
+          ssh -i ../private.key -tt root@$188.166.52.126
+          "
+            ls -al 
+            pwd
+          "
       - name: Checkout
         uses: actions/checkout@v2
       - name: Install Envoy
