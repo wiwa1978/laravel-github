@@ -75,7 +75,7 @@ jobs:
           "
       - name: Create SSH Config
         run: |
-          cd -p ~/.ssh/
+          cd ~/.ssh/
           touch config
           echo "Host 188.166.52.126" > ../config
           echo "  HostName 188.166.52.126" > ../config
