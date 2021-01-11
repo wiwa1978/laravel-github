@@ -68,12 +68,12 @@ jobs:
           SSH_KNOWN_HOSTS: ${{secrets.SSH_KNOWN_HOSTS}}
       - name: Create SSH Config file
         run: |
-          cd ~/.ssh/
+          cd /home/runner/.ssh/
           touch config
           echo "Host 188.166.52.126" > /home/runner/.ssh/config
-          echo "  HostName 188.166.52.126" > /home/runner/.ssh/config
-          echo "  PreferredAuthentications publickey" > /home/runner/.ssh/config
-          echo "  IdentityFile /home/runner/.ssh/private_key" > /home/runner/.ssh/config
+          echo "  HostName 188.166.52.126" >> /home/runner/.ssh/config
+          echo "  PreferredAuthentications publickey" >> /home/runner/.ssh/config
+          echo "  IdentityFile /home/runner/.ssh/private_key" >> /home/runner/.ssh/config
         shell: bash
       - name: Cat config
         run: |
@@ -83,7 +83,7 @@ jobs:
         shell: bash
       - name: SSH into DO and run
         run: >
-          ssh -i ../private.key -tt root@188.166.52.126
+          ssh -i /home/runner/.ssh/private_key -tt root@188.166.52.126
           "
             cd ~/.ssh/
             ls -al 
