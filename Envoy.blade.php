@@ -1,4 +1,4 @@
-@servers(['web' => 'root@206.189.12.59'])
+@servers(['web' => 'root@188.166.52.126'])
 
 @setup
     $repository = 'https://github.com/wiwa1978/laravel-github.git';
@@ -35,13 +35,13 @@
 
     echo 'Copy .env file'
     cd {{ $new_release_dir }}
-    cp {{ $new_release_dir }}/.env.example {{ $app_dir }}/.env
+    cp {{ $new_release_dir }}/.env {{ $app_dir }}/.env
 @endtask
 
 @task('run_composer', ['on' => ['web']])
     echo "Starting deployment ({{ $release }})"
     cd {{ $new_release_dir }}
-    composer install --prefer-dist --no-scripts -q -o
+    composer install --ignore-platform-reqs
 @endtask
 
 @task('deployment_cache', ['on' => ['web']])
@@ -65,11 +65,13 @@
 @endtask
 
 @task('generate_application_key', ['on' => ['web']])
+    echo "Generate App Key"
     cd {{ $app_dir }}/current
     php artisan key:generate;
 @endtask
 
 @task('run_migration', ['on' => ['web']])
+    echo "Running Migration"
     cd {{ $app_dir }}/current
     php artisan migrate --force --no-interaction;
 @endtask
