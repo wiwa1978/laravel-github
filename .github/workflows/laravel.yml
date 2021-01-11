@@ -74,7 +74,7 @@ jobs:
             ls -al 
             pwd
           "
-      - name: Create SSH Config
+      - name: Create SSH Config file
         run: |
           cd ~/.ssh/
           touch config
@@ -82,6 +82,7 @@ jobs:
           echo "  HostName 188.166.52.126" > ../config
           echo "  PreferredAuthentications publickey" > ../config
           echo "  IdentityFile /home/root/.ssh/private_key" > ../config
+        shell: bash
       - name: Cat config
         run: >
           ssh -i ../private.key -tt root@188.166.52.126
