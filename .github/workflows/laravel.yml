@@ -73,11 +73,12 @@ jobs:
           echo "Host 188.166.52.126" > ../config
           echo "  HostName 188.166.52.126" > ../config
           echo "  PreferredAuthentications publickey" > ../config
-          echo "  IdentityFile /home/root/.ssh/private_key" > ../config
+          echo "  IdentityFile ~/.ssh/private_key" > ../config
         shell: bash
       - name: Cat config
         run: |
           cd ~/.ssh/
+          ls -al
           cat config
         shell: bash
       - name: SSH into DO and run
