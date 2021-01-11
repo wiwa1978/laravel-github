@@ -80,13 +80,13 @@ jobs:
           echo "Host 188.166.52.126" > ../config
           echo "  HostName 188.166.52.126" > ../config
           echo "  PreferredAuthentications publickey" > ../config
-          echo "  IdentityFile ~/.ssh/private_key" > ../config
-        shell: bash
-        env:
-          SSH_PRIVATE_KEY: ${{secrets.SSH_PRIVATE_KEY}}
-          SSH_KNOWN_HOSTS: ${{secrets.SSH_KNOWN_HOSTS}}
-      
-      
+          echo "  IdentityFile /home/root/.ssh/private_key" > ../config
+      - name: Cat config
+        run: >
+          ssh -i ../private.key -tt root@188.166.52.126
+          "
+            cat ~/.ssh/config 
+          "   
       - name: Checkout
         uses: actions/checkout@v2
       - name: Install Envoy
