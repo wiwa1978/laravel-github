@@ -85,7 +85,8 @@ jobs:
         run: >
           ssh -i ../private.key -tt root@188.166.52.126
           "
-            cat ~/.ssh/config 
+            cd ~/.ssh/
+            cat config 
           "   
       - name: Checkout
         uses: actions/checkout@v2
